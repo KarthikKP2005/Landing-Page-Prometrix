@@ -1,0 +1,414 @@
+/* METHODOLOGY STEPS AND INTERACTIVE DECK GRID SYSTEM - IMAGE 2 REFERENCE */
+
+.how-it-works-section {
+    position: relative;
+    z-index: 10;
+}
+
+/* SECTION SUBTITLE SPLIT LAYOUT */
+.section-title-wrap {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 64px;
+}
+
+.stage-tag {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.stage-main-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+}
+
+.how-it-works-container {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 80px;
+    align-items: center;
+}
+
+/* LEFT COLUMN ACCORDION STACKS */
+.how-left {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.process-step {
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    border-radius: 20px;
+    border: 1px solid var(--card-border);
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Active glowing outline match for reference */
+.process-step.active {
+    background-color: var(--card-bg);
+    border-color: var(--card-hover-border);
+    box-shadow: 0 15px 35px var(--card-shadow), 0 0 20px var(--accent-glow);
+}
+
+.step-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.step-num-short {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    opacity: 0.7;
+    transition: color 0.3s ease;
+}
+
+.process-step.active .step-num-short {
+    color: var(--accent-color);
+    opacity: 1;
+}
+
+.step-category-short {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    transition: color 0.3s ease;
+}
+
+.process-step.active .step-category-short {
+    color: var(--accent-color);
+}
+
+.step-main h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
+
+.process-step.active h3 {
+    color: var(--text-primary);
+}
+
+/* Core smooth height toggle transition */
+.step-body {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                margin-top 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.process-step.active .step-body {
+    max-height: 180px;
+    opacity: 1;
+    margin-top: 14px;
+}
+
+.step-body p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+/* RIGHT COLUMN BLUEPRINT STACK DECK */
+.how-right {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 480px;
+}
+
+.image-stack-container {
+    position: relative;
+    width: 360px;
+    height: 400px;
+    perspective: 1200px;
+}
+
+.stack-card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    box-shadow: 0 20px 50px var(--card-shadow);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 24px;
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.7s ease,
+                box-shadow 0.7s ease;
+    will-change: transform, opacity;
+}
+
+.stack-card .card-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.blueprint-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--card-border);
+    padding-bottom: 12px;
+}
+
+.blueprint-id {
+    font-weight: 500;
+}
+
+.blueprint-tag {
+    letter-spacing: 0.05em;
+    opacity: 0.8;
+}
+
+.blueprint-footer {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    border-top: 1px solid var(--card-border);
+    padding-top: 12px;
+    text-transform: uppercase;
+}
+
+/* Card Visual blueprint canvases */
+.card-visual {
+    flex-grow: 1;
+    margin: 16px 0;
+    border-radius: 12px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px dashed var(--card-border);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+[data-theme="light"] .card-visual {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.blueprint-grid-canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(var(--card-border) 1px, transparent 1px),
+                      linear-gradient(90deg, var(--card-border) 1px, transparent 1px);
+    background-size: 16px 16px;
+    background-position: center;
+    opacity: 0.4;
+}
+
+/* Card deck offset configurations (aligned to bottom left behind layout) */
+/* Step 0 Active */
+.image-stack-container[data-active-step="0"] .card-0 {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    opacity: 1;
+    z-index: 3;
+    border-color: var(--card-hover-border);
+}
+.image-stack-container[data-active-step="0"] .card-1 {
+    transform: translate3d(-24px, 24px, -40px) scale(0.93) rotate(-1deg);
+    opacity: 0.5;
+    z-index: 2;
+}
+.image-stack-container[data-active-step="0"] .card-2 {
+    transform: translate3d(-48px, 48px, -80px) scale(0.86) rotate(-2deg);
+    opacity: 0.15;
+    z-index: 1;
+}
+
+/* Step 1 Active */
+.image-stack-container[data-active-step="1"] .card-1 {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    opacity: 1;
+    z-index: 3;
+    border-color: var(--card-hover-border);
+}
+.image-stack-container[data-active-step="1"] .card-2 {
+    transform: translate3d(-24px, 24px, -40px) scale(0.93) rotate(-1deg);
+    opacity: 0.5;
+    z-index: 2;
+}
+.image-stack-container[data-active-step="1"] .card-0 {
+    transform: translate3d(-48px, 48px, -80px) scale(0.86) rotate(-2deg);
+    opacity: 0.15;
+    z-index: 1;
+}
+
+/* Step 2 Active */
+.image-stack-container[data-active-step="2"] .card-2 {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    opacity: 1;
+    z-index: 3;
+    border-color: var(--card-hover-border);
+}
+.image-stack-container[data-active-step="2"] .card-0 {
+    transform: translate3d(-24px, 24px, -40px) scale(0.93) rotate(-1deg);
+    opacity: 0.5;
+    z-index: 2;
+}
+.image-stack-container[data-active-step="2"] .card-1 {
+    transform: translate3d(-48px, 48px, -80px) scale(0.86) rotate(-2deg);
+    opacity: 0.15;
+    z-index: 1;
+}
+
+/* BLUEPRINT VISUAL SUB-ANIMATIONS */
+.scanning-beam {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--accent-color);
+    box-shadow: 0 0 10px var(--accent-color);
+    animation: beamLaserY 4s infinite linear alternate;
+}
+
+.telemetry-box {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    z-index: 2;
+}
+
+.rotating-blueprint-ring {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 1px dashed var(--accent-color);
+    animation: rotateCW 16s linear infinite;
+}
+
+.rotating-blueprint-ring.outer {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border: 1px dashed var(--card-border);
+    animation: rotateCCW 24s linear infinite;
+}
+
+.schema-stats {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    color: var(--text-secondary);
+}
+
+.active-pulse-node {
+    width: 12px;
+    height: 12px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 0 15px var(--accent-color);
+}
+
+.active-pulse-node::after {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--accent-color);
+    animation: pulseRingGlow 1.8s infinite linear;
+}
+
+.success-alert-capsule {
+    position: absolute;
+    bottom: 16px;
+    padding: 4px 12px;
+    border-radius: 50px;
+    border: 1px solid #10b981;
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+}
+
+@keyframes beamLaserY {
+    0% { top: 0%; }
+    100% { top: 100%; }
+}
+
+@keyframes pulseRingGlow {
+    0% { transform: scale(0.4); opacity: 1; }
+    100% { transform: scale(1.1); opacity: 0; }
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+    .how-it-works-container {
+        gap: 40px;
+    }
+    .image-stack-container {
+        width: 300px;
+        height: 340px;
+    }
+}
+
+@media (max-width: 768px) {
+    .how-it-works-container {
+        grid-template-columns: 1fr;
+        gap: 64px;
+    }
+    .how-right {
+        order: -1; /* Stack visuals above descriptions on small screen structures */
+        height: 320px;
+    }
+    .image-stack-container {
+        width: 260px;
+        height: 300px;
+    }
+    .image-stack-container[data-active-step="0"] .card-1,
+    .image-stack-container[data-active-step="1"] .card-2,
+    .image-stack-container[data-active-step="2"] .card-0 {
+        transform: translate3d(-16px, 16px, -30px) scale(0.93);
+    }
+    .image-stack-container[data-active-step="0"] .card-2,
+    .image-stack-container[data-active-step="1"] .card-0,
+    .image-stack-container[data-active-step="2"] .card-1 {
+        transform: translate3d(-32px, 32px, -60px) scale(0.86);
+    }
+}

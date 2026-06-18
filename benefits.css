@@ -1,0 +1,222 @@
+/* STORYTELLING BENEFITS WITH FLOATING CLASS INTRO CARD */
+
+.benefits-section {
+    position: relative;
+    height: 350vh; 
+    padding: 0;
+    margin: 0;
+    max-width: none;
+    z-index: 12;
+}
+
+.horizontal-scroll-container {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.horizontal-sticky {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.horizontal-track {
+    display: flex;
+    height: 100%;
+    width: max-content;
+    will-change: transform;
+    transition: transform 0.15s cubic-bezier(0.1, 0.8, 0.25, 1);
+}
+
+.benefit-panel {
+    width: 90vw;
+    max-width: 650px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 80px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    border-right: 1px solid var(--card-border);
+    position: relative;
+}
+
+/* HIGHLY CLASSY FLOATING GLASS CARD FOR THE SLIDER INTRO */
+.panel-intro {
+    width: 90vw;
+    max-width: 580px;
+    margin: 0 40px;
+    padding: 60px 48px;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.02); /* Translucent transmission */
+    border: 1px solid rgba(255, 255, 255, 0.08); /* Highlight boundary line */
+    backdrop-filter: blur(25px); /* Increased blur depth */
+    -webkit-backdrop-filter: blur(25px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+    height: auto;
+    align-self: center; /* Center vertically within viewport track */
+}
+
+[data-theme="light"] .panel-intro {
+    background: rgba(255, 255, 255, 0.45);
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.06);
+}
+
+.panel-intro h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+}
+
+.panel-intro p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 28px;
+}
+
+.scroll-arrow-hint {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--accent-color);
+}
+
+.scroll-arrow-hint .arrow {
+    font-size: 1.4rem;
+    animation: arrowSweep 1.5s infinite alternate;
+}
+
+.panel-num {
+    font-family: var(--font-mono);
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--accent-color);
+    opacity: 0.12;
+    margin-bottom: 16px;
+}
+
+.panel-category {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.benefit-panel h3 {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 3vw, 2.3rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+}
+
+.benefit-panel p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.panel-illustration {
+    position: relative;
+    width: 100%;
+    height: 140px;
+    border-radius: 16px;
+    margin-top: 40px;
+    background: var(--btn-secondary-bg);
+    border: 1px dashed var(--card-border);
+    overflow: hidden;
+}
+
+.tech-grid-graphic {
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle at center, var(--accent-color) 1px, transparent 1.5px);
+    background-size: 16px 16px;
+    opacity: 0.2;
+}
+
+.speed-graphic {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--accent-glow-strong), transparent);
+    animation: speedGraphicSweep 3s infinite linear;
+}
+
+.resilience-graphic {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(45deg, var(--card-border) 25%, transparent 25%, transparent 75%, var(--card-border) 75%), 
+                      linear-gradient(45deg, var(--card-border) 25%, transparent 25%, transparent 75%, var(--card-border) 75%);
+    background-size: 16px 16px;
+    opacity: 0.12;
+}
+
+.panel-conclusion {
+    width: 90vw;
+    max-width: 500px;
+    border-right: none;
+}
+
+.panel-conclusion p {
+    margin-bottom: 32px;
+}
+
+@keyframes arrowSweep {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(8px); }
+}
+
+@keyframes speedGraphicSweep {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@media (max-width: 768px) {
+    .benefits-section {
+        height: auto;
+        padding: 80px 5%;
+    }
+    .horizontal-scroll-container {
+        position: relative;
+        height: auto;
+        overflow: visible;
+        display: block;
+    }
+    .horizontal-track {
+        flex-direction: column;
+        width: 100% !important;
+        transform: none !important;
+        gap: 60px;
+    }
+    .benefit-panel {
+        width: 100% !important;
+        max-width: none !important;
+        height: auto;
+        padding: 0 0 40px 0;
+        border-right: none;
+        border-bottom: 1px solid var(--card-border);
+    }
+    .benefit-panel:last-child {
+        border-bottom: none;
+    }
+    .panel-intro {
+        margin: 0 0 40px 0;
+        padding: 40px 24px;
+        width: 100% !important;
+    }
+}
